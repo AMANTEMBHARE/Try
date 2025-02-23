@@ -31,3 +31,9 @@ A web platform to report and monitor **road, water, and garbage issues** in a lo
 ```bash
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
