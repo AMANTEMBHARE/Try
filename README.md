@@ -27,8 +27,9 @@ A web platform to report and monitor **road, water, and garbage issues** in a lo
 ---
 
 ## 🚀 Getting Started  
-### **1️⃣ Clone the Repository**
+### **Installation**
 ```bash
+# Clone the Repository
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
 
