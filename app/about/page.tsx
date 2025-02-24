@@ -4,13 +4,13 @@ import { Leaf, Users, Target, User } from 'lucide-react';
 export default function AboutPage() {
   const teamMembers = [
     {
-      name: 'Sarah Johnson',
+      name: 'Aman Tembhare',
       role: 'Founder & CEO',
       image: '/team/sarah.jpg',
       bio: 'Passionate about urban development and community engagement'
     },
     {
-      name: 'Michael Chen',
+      name: 'Smit Raut',
       role: 'Technical Director',
       image: '/team/michael.jpg',
       bio: 'Expert in civic technology and smart city solutions'
@@ -22,7 +22,7 @@ export default function AboutPage() {
       bio: 'Dedicated to fostering community relationships'
     },
     {
-      name: 'David Kim',
+      name: 'David Singh',
       role: 'Environmental Specialist',
       image: '/team/david.jpg',
       bio: 'Focused on sustainable urban development'
@@ -33,7 +33,7 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 py-12">
       {/* Mission & Vision Section */}
       <section className="mb-16">
-        <h1 className="text-4xl font-bold text-center mb-12">About CivicWatch</h1>
+        <h1 className="text-4xl font-bold text-center mb-12">About PublicPulse</h1>
         <div className="grid md:grid-cols-2 gap-8">
           <Card>
             <CardHeader>

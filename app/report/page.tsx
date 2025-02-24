@@ -46,14 +46,47 @@ export default function ReportIssuePage() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log({ ...values, location: selectedLocation });
-    toast({
-      title: 'Issue Reported',
-      description: 'Your issue has been successfully reported.',
-    });
-    form.reset();
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log("Submitting form with values:", values, "Location:", selectedLocation);
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/issues', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...values,
+          location: selectedLocation,
+          date: new Date().toISOString(),
+        }),
+      });
+  
+      console.log("Response Status:", response.status);
+  
+      if (!response.ok) {
+        throw new Error('Failed to submit issue');
+      }
+  
+      const data = await response.json();
+      console.log('Issue submitted successfully:', data);
+  
+      toast({
+        title: 'Issue Reported',
+        description: 'Your issue has been successfully reported.',
+      });
+  
+      form.reset();
+    } catch (error) {
+      console.error('Error submitting issue:', error);
+      toast({
+        title: 'Submission Failed',
+        description: 'There was an error submitting the issue.',
+        variant: 'destructive',
+      });
+    }
   };
+  
 
   return (
     <div className="container mx-auto px-4 py-8">

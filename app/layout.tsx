@@ -8,7 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CivicWatch - Community Issue Reporting',
+  title: 'PublicPulse - Community Issue Reporting',
   description: 'Report and track community issues like road, water, and garbage problems',
 };
 

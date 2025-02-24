@@ -49,8 +49,8 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              Main: (555) 123-4567<br />
-              Support: (555) 987-6543
+              Main: 8934768361<br />
+              Support: 7346720974
             </p>
           </CardContent>
         </Card>
@@ -64,8 +64,8 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              General: info@civicwatch.com<br />
-              Support: support@civicwatch.com
+              General: info@publicpulse.com<br />
+              Support: support@publicpulse.com
             </p>
           </CardContent>
         </Card>
@@ -80,8 +80,8 @@ export default function ContactPage() {
           <CardContent>
             <p className="text-muted-foreground">
               123 Civic Center Plaza<br />
-              Suite 456<br />
-              City, State 12345
+              Trimurti Nagar<br />
+              Nagpur, Maharashtra 12345
             </p>
           </CardContent>
         </Card>

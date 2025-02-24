@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="flex">
             <Link href="/" className="flex items-center px-2 text-xl font-bold">
               <MapPin className="h-6 w-6 mr-2" />
-              CivicWatch
+              PublicPulse
             </Link>
           </div>
           <div className="flex space-x-4">

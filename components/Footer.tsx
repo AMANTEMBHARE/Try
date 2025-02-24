@@ -35,14 +35,14 @@ export function Footer() {
             <ul className="space-y-2">
               <li><Link href="/contact#faq" className="text-gray-600 hover:text-gray-900">FAQs</Link></li>
               <li><Link href="/contact" className="text-gray-600 hover:text-gray-900">Get in Touch</Link></li>
-              <li className="text-gray-600">Email: contact@civicwatch.com</li>
-              <li className="text-gray-600">Phone: (555) 123-4567</li>
+              <li className="text-gray-600">Email: contact@publicpulse.com</li>
+              <li className="text-gray-600">Phone: 8934768361</li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-200 mt-8 pt-6 text-center text-gray-600">
-          <p>&copy; {new Date().getFullYear()} CivicWatch. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PublicPulse. All rights reserved.</p>
         </div>
       </div>
     </footer>
