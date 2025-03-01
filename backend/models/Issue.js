@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const IssueSchema = new mongoose.Schema({
   type: {
@@ -10,16 +10,16 @@ const IssueSchema = new mongoose.Schema({
     required: true,
   },
   location: {
-    type: {
-      lat: { type: Number, required: true },
-      lng: { type: Number, required: true },
-    },
-    required: true,
+    lat: { type: Number, required: true },
+    lng: { type: Number, required: true },
+  }, // ✅ Fixed nested object structure
+  imageUrl: {
+    type: String, // ✅ Ensure imageUrl is stored
   },
   status: {
     type: String,
-    enum: ['pending', 'in-progress', 'resolved'],
-    default: 'pending',
+    enum: ["pending", "in-progress", "resolved"],
+    default: "pending",
   },
   date: {
     type: Date,
@@ -27,6 +27,6 @@ const IssueSchema = new mongoose.Schema({
   },
 });
 
-const Issue = mongoose.model('Issue', IssueSchema);
+const Issue = mongoose.model("Issue", IssueSchema);
 
 module.exports = Issue;

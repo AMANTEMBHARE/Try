@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Welcome to CivicWatch</h1>
+          <h1 className="text-4xl font-bold mb-4">Welcome to PublicPulse</h1>
           <p className="text-xl text-muted-foreground mb-8">
             Report and track community issues to make our city better
           </p>
