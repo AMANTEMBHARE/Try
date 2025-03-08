@@ -30,8 +30,8 @@ A web platform to report and monitor **road, water, and garbage issues** in a lo
 ### **Installation**
 ```bash
 # Clone the Repository
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/AMANTEMBHARE/issue-tracking-platform.git
+cd issue-tracking-platform
 
 # Install dependencies
 npm install
