@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import axios from "axios";
 
 const issueTypes = [
   { value: "all", label: "All Issues" },
@@ -26,14 +27,21 @@ interface Issue {
   date: string;
 }
 
+interface User {
+  name: string;
+  role: string;
+}
+
 export default function DashboardPage() {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [selectedType, setSelectedType] = useState("all");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     fetchIssues();
+    fetchUser();
   }, []);
 
   const fetchIssues = async () => {
@@ -52,13 +60,30 @@ export default function DashboardPage() {
     }
   };
 
+  const fetchUser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      const res = await axios.get("http://localhost:5000/api/auth/me", {
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      setUser(res.data);
+    } catch (err) {
+      console.error("Failed to fetch user", err);
+    }
+  };
+
   const filteredIssues = useMemo(() => {
     return selectedType === "all" ? issues : issues.filter((issue) => issue.type === selectedType);
   }, [selectedType, issues]);
 
   const mapCenter = useMemo(() => {
     if (filteredIssues.length === 0) return { lat: 20.5937, lng: 78.9629 }; // Default (India)
-    return filteredIssues[0].location; // Center on first issue
+    return filteredIssues[0].location;
   }, [filteredIssues]);
 
   const formatDate = (dateString: string) =>
@@ -84,6 +109,16 @@ export default function DashboardPage() {
           </Select>
         </div>
       </div>
+
+      {/* Admin Panel Button (RBAC) */}
+      {user?.role === "admin" && (
+        <div className="bg-green-100 text-green-700 p-4 rounded-lg">
+          <p className="font-semibold">Hello Admin, you have special access!</p>
+          <button className="bg-green-600 text-white px-4 py-2 rounded mt-2 hover:bg-green-700 transition">
+            Go to Admin Panel
+          </button>
+        </div>
+      )}
 
       {/* Main Content */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -142,7 +177,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Google Maps Integration */}
+        {/* Google Maps */}
         <Card>
           <CardHeader>
             <CardTitle>Issue Locations</CardTitle>

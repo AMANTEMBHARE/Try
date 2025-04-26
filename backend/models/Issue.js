@@ -12,9 +12,9 @@ const IssueSchema = new mongoose.Schema({
   location: {
     lat: { type: Number, required: true },
     lng: { type: Number, required: true },
-  }, // ✅ Fixed nested object structure
+  },
   imageUrl: {
-    type: String, // ✅ Ensure imageUrl is stored
+    type: String,
   },
   status: {
     type: String,
@@ -24,6 +24,13 @@ const IssueSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+
+  // ✅ Track which user created the issue
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
 });
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Issue = require("../models/Issue");
-
+const { authMiddleware, adminMiddleware } = require("./middlewares/auth");
 
 router.get("/test", (req, res) => {
     res.send("API is working!");
@@ -80,6 +80,25 @@ app.get('/api/issues', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch issues' });
   }
 });
+
+// Example: Only admin can delete issues
+router.delete("/issues/:id", authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    await Issue.findByIdAndDelete(req.params.id);
+    res.json({ message: "Issue deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting issue" });
+  }
+});
+
+// 👇 Allow all users to create/view issues
+router.post("/issues", authMiddleware, createIssue);
+router.get("/issues", authMiddleware, getIssues);
+
+// 👇 Only admins can update & delete issues
+router.put("/issues/:id", authMiddleware, adminMiddleware, updateIssue);
+router.delete("/issues/:id", authMiddleware, adminMiddleware, deleteIssue);
+
 
 
 module.exports = router;
