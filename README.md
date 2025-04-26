@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌍 Issue Tracking Platform 🚀  
 
 A web platform to report and monitor **road, water, and garbage issues** in a locality. This system allows users to submit complaints with images and locations, while authorities can track and resolve them efficiently.  
@@ -38,3 +39,6 @@ npm install
 
 # Run development server
 npm run dev
+=======
+# Try
+>>>>>>> d715c39a918cdbcf1f165b472635bac2cf3e837b
